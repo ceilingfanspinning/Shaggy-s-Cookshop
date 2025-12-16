@@ -6,6 +6,7 @@ This is a Python console application that simulates a restaurant ordering system
 
 1. Make sure Python is installed.
 2. Run the script.
+3. See screenshots of working code in Shaggys Cookshop document
    
 ## Features
 
