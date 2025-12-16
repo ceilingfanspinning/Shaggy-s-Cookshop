@@ -1,0 +1,67 @@
+def display_menu():
+    print("Here is our menu:")
+    print("")
+    print("1. Fried Chicken Combo - $800")
+    print("2. Stew Beef Combo - $900")
+    print("3. Jerk Pork Combo - $950")
+    print("4. Ting Soda - $200")
+    print("5. Ginger Beer Soda - $150")
+    print("")
+
+
+def get_user_selection():
+    try:
+        choice = int(input("Please enter the number of the item you would like: "))
+        if 1 <= choice <= 5:
+            return choice
+        else:
+            print("Oops! Please enter a number from 1 to 5.")
+            return get_user_selection()
+    except ValueError:
+        print("Oops! Please enter a NUMBER.")
+        return get_user_selection()
+
+
+def calculate_total_price(selected_items):
+    prices = [800, 900, 950, 200, 150]
+    total_price = sum(prices[item - 1] for item in selected_items)
+    return total_price
+
+
+def main():
+    selected_items = []
+
+    while True:
+        display_menu()
+        user_choice = get_user_selection()
+        selected_items.append(user_choice)
+        print("Item added to your order!\n")
+
+        add_more = input(
+            "Would you like to add something else to your order? (Enter 'yes' or 'no'): "
+        ).lower()
+
+        if add_more == 'no':
+            break
+
+    print("\nYour selected items:")
+    for item in selected_items:
+        if item == 1:
+            print("Fried Chicken Combo - $800")
+        elif item == 2:
+            print("Stew Beef Combo - $900")
+        elif item == 3:
+            print("Jerk Pork Combo - $950")
+        elif item == 4:
+            print("Ting Soda - $200")
+        elif item == 5:
+            print("Ginger Beer Soda - $150")
+
+    total_price = calculate_total_price(selected_items)
+    print(f"\nYour order total is: ${total_price}")
+    print("\nThank you for ordering!")
+
+
+if __name__ == "__main__":
+    print("Welcome to Shaggy's Cookshop!")
+    main()
